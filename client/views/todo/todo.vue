@@ -1,10 +1,9 @@
 <template>
   <section class="real-app">
     <div class="tab-container">
-      <tabs value="1">
-        <tab label="tab1" index="1"></tab>
-        <tab index="2"><span slot="label" style="color: red">tab2</span></tab>
-        <tab label="tab3" index="3"></tab>
+      <tabs :value="filter" @change="handleChangeTab">
+        <tab :label="tab" :index="tab" v-for="tab in states" :key="tab">
+        </tab>
       </tabs>
     </div>
     <input
@@ -23,7 +22,6 @@
     <helper
       :filter="filter"
       :todos="todos"
-      @toggle="toggleFilter"
       @clearAllCompleted="clearAllCompleted"
     />
     <!-- <router-view></router-view> -->
@@ -61,7 +59,9 @@ export default {
   data () {
     return {
       todos: [],
-      filter: 'all'
+      filter: 'all',
+      inputContent: '',
+      states: ['all', 'active', 'completed']
     }
   },
   components: {
@@ -89,11 +89,14 @@ export default {
     deleteTodo (id) {
       this.todos.splice(this.todos.findIndex(todo => todo.id === id), 1)
     },
-    toggleFilter (state) {
-      this.filter = state
-    },
+    // toggleFilter (state) {
+    //   this.filter = state
+    // },
     clearAllCompleted () {
       this.todos = this.todos.filter(todo => !todo.completed)
+    },
+    handleChangeTab (value) {
+      this.filter = value
     }
   }
 }

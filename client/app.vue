@@ -12,19 +12,19 @@
     <transition name="fade">
       <router-view></router-view>
     </transition>
-    <button @click="notify">click</button>
+    <!-- <button @click="notify">click</button> -->
     <!-- <notification content="test notify"></notification> -->
     <Footer></Footer>
   </div>
 </template>
 
 <script>
-import {
-  mapState,
-  mapGetters,
-  mapActions,
-  mapMutations
-} from 'vuex'
+// import {
+//   mapState,
+//   mapGetters,
+//   mapActions,
+//   mapMutations
+// } from 'vuex'
 import Header from './layout/header.vue'
 import Footer from './layout/footer.jsx'
 // import Todo from './views/todo/todo.vue'
@@ -55,8 +55,8 @@ export default {
     // }, 1000)
   },
   methods: {
-    ...mapActions(['updateCountAsync']),
-    ...mapMutations(['updateCount']),
+    // ...mapActions(['updateCountAsync']),
+    // ...mapMutations(['updateCount']),
     notify () {
       this.$notify({
         content: 'test $notify',
@@ -68,15 +68,15 @@ export default {
     // textA () {
     //   return this.$store.state.b.text
     // },
-    ...mapState({
-      counter: (state) => state.count
-      // textA: state => state.a.text,
-      // textC: state => state.c.text
-    }),
-    ...mapGetters({
-      fullName: 'fullName'
-      // textPlus: 'a/textPlus'
-    })
+    // ...mapState({
+    //   counter: (state) => state.count
+    //   // textA: state => state.a.text,
+    //   // textC: state => state.c.text
+    // }),
+    // ...mapGetters({
+    //   fullName: 'fullName'
+    //   // textPlus: 'a/textPlus'
+    // })
     // count () {
     //   return this.$store.state.count
     // },
